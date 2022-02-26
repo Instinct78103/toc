@@ -1,0 +1,41 @@
+{
+    "name": "ct",
+    "version": "0.0.1",
+    "scripts": {
+        "build": "webpack --mode production && gulp default",
+        "buildDev": "webpack --mode development && gulp default",
+        "watch": "webpack --mode production --watch & gulp watch",
+        "watchDev": "webpack --mode development --watch & gulp watch",
+        "watchGulp": "gulp watch",
+        "buildGulp": "gulp default",
+        "watchWebpack": "webpack --mode production --watch",
+        "watchWebpackDev": "webpack --mode development --watch",
+        "buildWebpack": "webpack --mode production",
+        "buildWebpackDev": "webpack --mode development"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.14.6",
+        "@babel/plugin-transform-runtime": "^7.14.5",
+        "@babel/preset-env": "^7.14.5",
+        "babel-loader": "^8.2.2",
+        "glob": "^7.1.7",
+        "gulp": "^4.0.2",
+        "gulp-autoprefixer": "^8.0.0",
+        "gulp-babel": "^8.0.0",
+        "gulp-clean-css": "^4.3.0",
+        "gulp-group-css-media-queries": "^1.2.2",
+        "gulp-plumber": "^1.2.1",
+        "gulp-rename": "^2.0.0",
+        "gulp-sass": "^4.1.0",
+        "gulp-uglify": "^3.0.2",
+        "terser-webpack-plugin": "^5.1.3",
+        "webpack": "^5.39.1",
+        "webpack-cli": "^4.7.2"
+    },
+    "browserslist": [
+        "last 5 versions"
+    ],
+    "dependencies": {
+        "include-media": "^1.4.10"
+    }
+}

@@ -1,0 +1,58 @@
+@mixin font($color: null, $font-family: null, $font-weight: null, $font-size: null, $line-height: null, $text-transform: null, $text-decoration: null, $main: ()) {
+    $default: (
+        letter-spacing: 0
+    );
+
+    @if $color {
+        $default: map-merge($default, (color: $color));
+    }
+
+    @if $font-family {
+        $default: map-merge($default, (font-family: $font-family));
+    }
+
+    @if $font-weight {
+        $default: map-merge($default, (font-weight: $font-weight));
+    }
+
+    @if $font-size {
+        $default: map-merge($default, (font-size: $font-size));
+    }
+
+    @if $line-height {
+        $default: map-merge($default, (line-height: $line-height));
+    }
+
+    @if $text-transform {
+        $default: map-merge($default, (text-transform: $text-transform));
+    }
+
+    @if $text-decoration {
+        $default: map-merge($default, (text-decoration: $text-decoration));
+    }
+
+    @each $main-name, $main-value in map-merge($default, $main) {
+        @if $main-value {
+            @if $main-name == font-weight {
+                @if $main-value == lighter {
+                    $main-value: 300;
+                } @else if $main-value == normal {
+                    $main-value: 400;
+                } @else if $main-value == bold {
+                    $main-value: 700;
+                } @else if $main-value == bolder {
+                    $main-value: 800;
+                }
+            }
+            #{$main-name}: $main-value;
+        }
+    }
+}
+
+@mixin font-ubuntu($color, $font-weight: null, $font-size: null, $line-height: null, $text-transform: null, $text-decoration: null, $main: ()) {
+    @include font($color, $font-ubuntu, $font-weight, $font-size, $line-height, $text-transform, $text-decoration, $main);
+}
+
+@mixin font-poppins($color, $font-weight: null, $font-size: null, $line-height: null, $text-transform: null, $text-decoration: null, $main: ()) {
+    @include font($color, $font-poppins, $font-weight, $font-size, $line-height, $text-transform, $text-decoration, $main);
+}

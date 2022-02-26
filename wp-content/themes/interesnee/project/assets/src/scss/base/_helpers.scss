@@ -1,0 +1,241 @@
+// Interesnee.ru Helpers
+@import '../../node_modules/include-media/dist/include-media';
+@import 'mixins';
+
+%textOverflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+%container {
+  max-width: $container-max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: $grid-gutter;
+  padding-left: $grid-gutter;
+
+  @include media('<=phone') {
+    padding-right: $grid-gutter-mobile;
+    padding-left: $grid-gutter-mobile;
+  }
+}
+
+%sectionTitle {
+  @include set-fz-lh(46, 58);
+  font-weight: 400;
+  color: $red;
+
+  @include media('<=desktop') {
+    font-size: 34px;
+  }
+
+  @include media('<=phone') {
+    @include set-fz-lh(25, 30);
+    font-weight: 600;
+  }
+}
+
+%section {
+  position: relative;
+  padding-top: 90px;
+  padding-bottom: 90px;
+
+  @include media('<=desktop') {
+    padding-top: 60px;
+  }
+
+  @include media('<=phone') {
+    padding-top: 40px;
+    padding-bottom: 80px;
+  }
+}
+
+%section:nth-child(odd) {
+  @include media('<=phone') {
+    background-color: $white-gray;
+  }
+}
+
+%section::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  display: block;
+  width: 93.4%;
+  max-width: 1280px;
+  height: 1px;
+  background-color: $gray-4;
+
+  @include media('<=phone') {
+    display: none;
+  }
+}
+
+%section:last-child::after {
+  display: none;
+}
+
+%heading {
+  color: $red;
+  font-size: 46px;
+  line-height: 58px;
+  text-align: center;
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: 55px;
+
+  @include media('<tablet') {
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 30px;
+  }
+}
+
+%content {
+  margin: 0 auto;
+  max-width: 992px;
+}
+
+$button-color: $red-light;
+$button-hover-color: darken($red-light, 10%);
+
+%button {
+  @include set-fz-lh(12, 17);
+  font-weight: bold;
+  font-family: $default-font-stack;
+  color: $white;
+  text-transform: uppercase;
+  display: inline-block;
+  vertical-align: top;
+  padding: 15px 30px 13px;
+  border: 0;
+  border-radius: 22.5px;
+  outline: none;
+  background-color: $button-color;
+  cursor: pointer;
+  transition: background $transitions-delay, color $transitions-delay;
+  text-decoration: none;
+
+  @include on-event() {
+    background-color: $button-hover-color;
+    color: $white;
+  }
+}
+
+%buttonWhite {
+  background-color: $white;
+  color: $red;
+}
+
+$red-light-darken: darken($red-light, 20%);
+
+%slickArrows button {
+  position: absolute;
+  z-index: $zidx-main;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  border: 2px solid $red-light;
+  border-radius: 50%;
+  outline: none;
+  background-color: $transparent;
+  font-size: 0;
+  cursor: pointer;
+  transition: border 0.3s;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-top: 2px solid $red-light;
+    border-left: 2px solid $red-light;
+    border-radius: 2px;
+    transition: border 0.3s;
+  }
+}
+
+%slickArrows button:hover,
+%slickArrows button:focus {
+  border-color: $red-light-darken;
+
+  &::after {
+    border-color: $red-light-darken;
+  }
+}
+
+%slickArrows button[aria-label='Previous'] {
+  left: -50px;
+
+  &::after {
+    margin-left: 5px;
+    transform: rotate(-45deg);
+  }
+}
+
+%slickArrows button[aria-label='Next'] {
+  right: -50px;
+
+  &::after {
+    margin-right: 5px;
+    transform: rotate(135deg);
+  }
+}
+
+$dots-color: #d8d8d8;
+$dots-active-color: #3fa2f7;
+
+%slickDots {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin: 0 4px;
+    font-size: 0;
+  }
+
+  li button {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    outline: none;
+    font-size: 0;
+    background-color: $dots-color;
+  }
+
+  li[class='slick-active'] button {
+    background: $dots-active-color;
+  }
+}
+
+%hoverBlock {
+  transition: all 0.8s cubic-bezier(0, 0, 0, 1);
+  transform: translateZ(0); /*for older browsers*/
+  will-change: transform;
+
+  img {
+    transform: translateZ(0); /*for older browsers*/
+    will-change: transform;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}

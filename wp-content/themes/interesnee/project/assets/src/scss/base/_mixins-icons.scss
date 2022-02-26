@@ -1,0 +1,13 @@
+@mixin icon {
+    display: inline-block;
+    @include background-image-contain();
+}
+
+@mixin icon-sized($width, $height, $url: null) {
+    width: $width;
+    height: $height;
+    background-size: $width $height;
+    @if $url != null {
+        background-image: url($url);
+    }
+}

@@ -1,0 +1,11 @@
+@function font_path($font-name) {
+    @return $fonts-path + $font-name;
+}
+
+@function icon_path($icon-name) {
+    @return $icons-path + $icon-name;
+}
+
+@function image_path($image-name) {
+    @return $images-path + $image-name;
+}

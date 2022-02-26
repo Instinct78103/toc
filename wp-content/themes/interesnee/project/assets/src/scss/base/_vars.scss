@@ -1,0 +1,89 @@
+// Paths
+$fonts-path: '../fonts/';
+$icons-path: '../icons';
+$images-path: '../images';
+
+// Colors
+$color-white: #ffffff;
+$color-black: #000000;
+$color-red: #ff6347;
+$color-mine-shaft: #3a3a3a;
+$color-mine-shaft-darker: #383838;
+$color-mine-geyser: #d3d8e6;
+$color-mine-gallery: #ececec;
+
+// Fonts
+$font-ubuntu: Ubuntu, serif;
+$font-poppins: Poppins, sans-serif;
+
+// Interesnee.ru Variables
+
+// Colors
+$white: #fff;
+$white-gray: #f7f7f7;
+$black: #000;
+$transparent: transparent;
+$inherit: inherit;
+
+$red: #b71c1c;
+$red-transparent: rgba(183, 28, 28, 0.89);
+$red-2: #c63939;
+$red-dark: #931314;
+$red-light: #f75050;
+$green-light: #00c853;
+$blue: #297fca;
+$blue-deep: #075eab;
+$gray: #f0f0f0;
+$gray-2: #d4d4d4;
+$gray-3: #979797;
+$gray-4: #ccc;
+$gray-4-05: rgba(#ccc, 0.5);
+$gray-5: #6f6f6f;
+$gray-6: #343434;
+$gray-7: #eee;
+$gray-dark: #2e2e2e;
+$black-2: #111;
+
+// Animation duration
+$animation-duration: 0.35s;
+
+// Fonts
+$default-font-stack: 'Open Sans', Helvetica, Arial, sans-serif;
+$default-font-size: 14px;
+
+// Width
+$min-screen-width: 320px;
+$container-max-width: 1440px;
+
+$header-height: 67px;
+$header-height-mobile: 40px;
+
+$transitions-type: ease-in-out;
+$transitions-delay: 0.3s;
+
+// Grid
+$grid-gutter: 15px;
+$grid-gutter-mobile: 10px;
+
+// breakpoints for include-media
+$breakpoints: (
+        'phone': 480px,
+        'tablet': 768px,
+        'desktop': 1024px,
+        'desktop-lg': 1200px,
+        'desktop-xlg': 1440px
+);
+
+$hamburger-padding-x: 10px !default;
+$hamburger-padding-y: 10px !default;
+$hamburger-layer-width: 18px !default;
+$hamburger-layer-height: 2px !default;
+$hamburger-layer-spacing: 4px !default;
+$hamburger-layer-color: #fff !default;
+
+$hamburger-total-width: $hamburger-layer-width + $hamburger-padding-x + $hamburger-padding-y;
+
+$zidx-lower: -1;
+$zidx-main: 1;
+$zidx-over: 2;
+$zidx-super: 3;

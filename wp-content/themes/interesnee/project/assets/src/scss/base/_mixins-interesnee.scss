@@ -1,0 +1,84 @@
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+/// Make a context based selector a little more friendly
+/// @author Hugo Giraudel
+/// @param {String} $context
+@mixin when-inside($context) {
+  #{$context} & {
+    @content;
+  }
+}
+
+/* gradient */
+@mixin gradient($startColor, $stopColor) {
+  background: linear-gradient(to top, $startColor 0%, $stopColor 100%);
+}
+
+/* placeholder */
+@mixin placeholder($color) {
+  &::placeholder {
+    color: $color;
+  }
+}
+
+/* round with decimal */
+@function decimal-round($number, $digits: 3, $mode: round) {
+  $n: 1;
+  // $number must be a number
+  @if type-of($number) != number {
+    @warn '#{ $number } is not a number.';
+    @return $number;
+  }
+  // $digits must be a unitless number
+  @if type-of($digits) != number {
+    @warn '#{ $digits } is not a number.';
+    @return $number;
+  } @else if not unitless($digits) {
+    @warn '#{ $digits } has a unit.';
+    @return $number;
+  }
+  @if $digits > 0 {
+    @for $i from 1 through $digits {
+      $n: $n * 10;
+    }
+  }
+  @if $mode == round {
+    @return round($number * $n) / $n;
+  } @else if $mode == ceil {
+    @return ceil($number * $n) / $n;
+  } @else if $mode == floor {
+    @return floor($number * $n) / $n;
+  } @else {
+    @warn '#{ $mode } is undefined keyword.';
+    @return $number;
+  }
+}
+
+/* set FontSize and Unitless LineHeight instead of px*/
+@mixin set-fz-lh($font-size, $line-height) {
+  font-size: $font-size + unquote('px');
+  line-height: decimal-round($line-height/$font-size);
+}
+
+@function relative-mb($mb-in-px, $font-size) {
+  @return decimal-round($mb-in-px/$font-size) + unquote('em');
+}

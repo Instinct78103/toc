@@ -1,0 +1,16 @@
+@mixin background-image($size: cover, $position: center, $url: null) {
+    background-position: $position;
+    background-size: $size;
+    background-repeat: no-repeat;
+    @if $url != null {
+        background-image: url($url);
+    }
+}
+
+@mixin background-image-cover($url: null) {
+    @include background-image(cover, center, $url);
+}
+
+@mixin background-image-contain($url: null) {
+    @include background-image(contain, center, $url);
+}

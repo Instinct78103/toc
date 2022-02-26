@@ -1,0 +1,35 @@
+@mixin preloader($main: ()) {
+
+    $default: (
+        height: 3px,
+        width: 100%,
+        position: relative,
+        overflow: hidden,
+        background-color: #dddddd
+    );
+
+    @each $main-name, $main-value in map-merge($default, $main) {
+        @if $main-value {
+            #{$main-name}: $main-value;
+        }
+    }
+
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: -200px;
+        width: 200px;
+        height: 3px;
+        background-color: #f45d4d;
+        animation: preloader 2s linear infinite;
+    }
+
+    &:not(.active) {
+        background-color: transparent;
+
+        &:before {
+            background-color: transparent;
+        }
+    }
+}

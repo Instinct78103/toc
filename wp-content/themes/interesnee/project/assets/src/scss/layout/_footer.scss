@@ -1,0 +1,183 @@
+$footer-color: $blue;
+$footer-color-mobile: #2a292b;
+$social-icon-color: $red-light;
+
+.site-footer {
+    width: 100%;
+    background: $gray-dark;
+    color: $white;
+    padding: 47px 0 20px;
+    text-align: center;
+
+    > .footer-container {
+        max-width: 1240px;
+        width: calc(100% - 80px);
+        margin: 0 auto;
+        display: flex;
+        flex-flow: column wrap;
+
+        @media (min-width: map-get($breakpoints, desktop)) {
+            flex-flow: row wrap;
+            justify-content: space-between;
+        }
+
+        .div-heading {
+            margin-bottom: 20px;
+        }
+
+        .office-locations {
+            width: 100%;
+
+            > p {
+                margin-bottom: 20px;
+            }
+
+            @include media('<desktop') {
+                margin-bottom: 40px;
+            }
+
+            @media (min-width: map-get($breakpoints, desktop)) {
+                width: calc(100% * 2 / 3 - 1%);
+            }
+
+            > ul {
+                display: grid;
+                padding-left: 0;
+
+                @media (min-width: map-get($breakpoints, tablet)) {
+                    grid-template-columns: repeat(2, fit-content(100%));
+                    justify-content: space-evenly;
+                    grid-row-gap: 40px;
+                    grid-column-gap: 20px;
+                }
+
+                @media (min-width: map-get($breakpoints, desktop)) {
+                    grid-template-columns: repeat(3, fit-content(100%));
+                    grid-template-rows: repeat(3, fit-content(100%));
+                    grid-auto-flow: column;
+                    justify-content: space-between;
+                }
+
+                li {
+                    text-align: left;
+                    list-style-type: none;
+                    line-height: 1.2;
+                    @include media('<desktop') {
+                        text-align: center;
+                    }
+
+                    p {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 10px;
+                        @include media('<desktop') {
+                            justify-content: center;
+                        }
+                    }
+
+                    a {
+                        color: #fff;
+                    }
+
+                    .flag {
+                        display: inline-block;
+                        width: 25px;
+                        height: 15px;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        margin: 0 10px 0 0;
+                        padding: 0;
+
+                        $flags: (ru, vn, kz, us);
+
+                        @each $name in $flags {
+                            &.#{$name} {
+                                background-image: url(#{$icons-path}/flag-#{$name}.svg);
+                            }
+                        }
+                    }
+                }
+            }
+
+            //.owl-dots {
+            //    .owl-dot {
+            //        border: 1px solid #fff;
+            //        border-radius: 50%;
+            //        width: 10px;
+            //        height: 10px;
+            //
+            //        &.active {
+            //            background-color: #fff;
+            //        }
+            //
+            //        &:not(:last-child) {
+            //            margin-right: 10px;
+            //        }
+            //    }
+            //}
+        }
+
+        .social-links {
+            @media (min-width: map-get($breakpoints, desktop)) {
+                width: calc(100% / 3 - 1%);
+            }
+
+            .div-heading {
+                @include media('<desktop') {
+                    display: none;
+                }
+            }
+
+            ul {
+                display: flex;
+                list-style: none;
+                justify-content: center;
+                padding-left: 0;
+
+                > li {
+                    margin: 0 10px;
+                    display: inline-flex;
+
+                    a {
+                        display: inline-flex;
+                    }
+
+                    svg {
+                        fill: #f75050;
+                        transition: fill 0.3s;
+                    }
+                }
+            }
+        }
+
+        .bottom {
+            width: 100%;
+            display: flex;
+            margin-top: 3vw;
+
+            p {
+                font-size: 16px;
+                color: #fff;
+            }
+
+            @media (min-width: map-get($breakpoints, desktop)) {
+                margin-top: 60px;
+                justify-content: space-between;
+            }
+
+            @include media('<desktop') {
+                justify-content: center;
+
+                .copyright {
+                    display: none;
+                }
+            }
+
+            .policy {
+                a {
+                    color: #fff;
+                }
+            }
+        }
+    }
+}

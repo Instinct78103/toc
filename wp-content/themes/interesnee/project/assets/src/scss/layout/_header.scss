@@ -1,0 +1,184 @@
+@keyframes slideTop {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.mobile-menu-toggle {
+    @media(min-width: 1000px) {
+        display: none;
+    }
+
+    .lines-button {
+        display: grid;
+        grid-template-rows: repeat(3, 2px);
+        grid-row-gap: 4px;
+        width: 18px;
+
+        .lines {
+            height: 2px;
+            width: 100%;
+            background-color: #fff;
+            display: block;
+        }
+    }
+}
+
+.mobile-menu-container {
+    display: none;
+    width: 100%;
+    background-color: #b71c1c;
+    z-index: 100;
+
+    &.open {
+        display: block;
+        position: fixed;
+
+        .mobile-nav {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 30px 30px 70px;
+
+            li {
+                border-bottom: 1px solid #c63939;
+
+                > a {
+                    display: block;
+                    color: #fff;
+                    font-size: 22px;
+                    padding: 13px 10px;
+                }
+            }
+        }
+    }
+}
+
+#menu-top-menu {
+    @media(max-width: 999px) {
+        display: none;
+    }
+}
+
+.site-header {
+    background-color: $red-dark;
+    padding: 18px 0;
+    transition: background-color .3s ease-in-out, box-shadow .3s ease-in-out, -webkit-box-shadow .3s ease-in-out;
+    z-index: 99;
+
+    .site-branding {
+        max-width: 1240px;
+        width: calc(100% - 80px);
+        margin: 0 auto;
+
+        @media (min-width: 1000px) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        @media(max-width: 999px) {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .site-logo {
+            grid-column: 2 / 3;
+            justify-self: center;
+            align-items: center;
+        }
+
+        #site-navigation {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+            justify-self: left;
+            align-items: center;
+        }
+    }
+
+    &.sticky {
+        $header-color: transparent;
+        $header-color-sticky: $red;
+
+        animation-name: slideTop;
+        animation-duration: $transitions-delay;
+        position: sticky;
+        background-color: $header-color-sticky;
+        box-shadow: 0 5px 10px rgba(47, 25, 25, 0.3);
+        width: 100%;
+    }
+
+    .custom-logo-link {
+        width: 186px;
+        height: 31px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .site-logo {
+        width: fit-content;
+
+        .logo {
+            @media(max-width: 999px) {
+                display: none;
+            }
+        }
+
+        .logo_mobile {
+            @media(min-width: 1000px) {
+                display: none;
+            }
+
+            img {
+                width: 37px;
+            }
+        }
+    }
+
+    .site-title {
+        display: none;
+    }
+
+    .main-navigation {
+        text-align: right;
+        margin-top: 0;
+        display: flex;
+        justify-content: flex-end;
+
+        .menu-top-menu-container {
+
+            & > .main-menu {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                margin: 0;
+                list-style-type: none;
+                //width: calc(100% - 200px);
+
+                .menu-item {
+                    margin-left: 30px;
+
+                    a {
+                        display: block;
+                        color: #fff;
+                        text-decoration: none;
+                        border: 2px solid transparent;
+                        padding: 5px 10px;
+                        font-weight: normal;
+
+                        &:hover {
+                            color: #fff;
+                            border-color: #f75050;
+                            border-radius: 50px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
